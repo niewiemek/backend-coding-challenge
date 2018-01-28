@@ -4,18 +4,29 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
-
-/**
- * Created by niewiemek on 25.01.2018.
- */
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Expense {
 
+    @Id
+    @GeneratedValue
     private Long id;
+
+    @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
     private Date date;
-    private Double amount;
+
+    @Column(nullable = false)
+    private BigDecimal amount;
+
+    @Column(nullable = false)
+    private BigDecimal vat;
+
+    @Column(length = 5000)
     private String reason;
 }

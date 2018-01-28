@@ -35,5 +35,14 @@ Application is built as a JAR file that you can run with:
 
 ```java -jar expanses.jar```
 
+## Database setup
+For purse of this project Hibernate can create database schema for you. To do this please set the following property to create on first start. It should be changed to none afterwards.
+
+Create:
+``` spring.jpa.hibernate.ddl-auto=create ```
+
+Runtime:
+``` spring.jpa.hibernate.ddl-auto=none ```
+
 ## Development Hints
 Project Lombok is used to make the code a bit more friendly. Please install Project Lombok plugin into your IDEA. You can check more details here: https://projectlombok.org/
