@@ -35,14 +35,33 @@ app.controller("ctrlExpenses", ["$rootScope", "$scope", "config", "restalchemy",
 		if ($scope.expensesform.$valid) {
 			// Post the expense via REST
 			restExpenses.post($scope.newExpense).then(function() {
-				// Reload new expenses list
+				$scope.clearExpense();
 				loadExpenses();
 			});
 		}
 	};
 
 	$scope.clearExpense = function() {
-		$scope.newExpense = {};
+		if($scope.expensesform) {
+			$scope.expensesform.$setPristine();
+		}
+		$scope.newExpense = {
+			date: '',
+			amount: '',
+			vat: '',
+			currency: "GBP",
+			reason: ''
+		};
+	};
+
+	$scope.updateVat = function() {
+		var amount = $scope.newExpense.amount
+		if(!isNaN(parseFloat(amount)) && isFinite(amount)) {
+			var netPrice = amount/1.2;
+			$scope.newExpense.vat= Math.round((amount - netPrice) * 100) / 100;	
+		} else {
+			$scope.newExpense.vat = 0;
+		}		
 	};
 
 	// Initialise scope variables

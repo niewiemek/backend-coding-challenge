@@ -1,4 +1,4 @@
-package com.engagetech.codingchallenge.entity;
+package com.engagetech.codingchallenge.common.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

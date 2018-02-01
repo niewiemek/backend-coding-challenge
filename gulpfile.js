@@ -359,9 +359,15 @@ gulp.task("watch", function(done) {
 	done();
 });
 
+// Copy built files to the backend
+gulp.task("deploy-backend", function() {
+	gulp.src(settings.paths.build.target + "**/*").pipe(gulp.dest("./solution/src/main/resources/static"));
+});
+
 // Main release build chain
 gulp.task("build", gulpsync.sync(["gitinfo", "copyfrom", "iconfont", "css", "html", "apps-scripts", "copyto"], "sync release"));
 gulp.task("build-lint", gulpsync.sync(["gitinfo", "copyfrom", "eslint", "iconfont", "css", "html", "apps-scripts", "copyto"], "sync release-lint"));
+gulp.task("build-deploy", gulpsync.sync(["build", "deploy-backend"], "sync release-deploy"));
 
 // Uncompressed release build chain
 gulp.task("dev", gulpsync.sync(["uncompressed", "build"], "sync dev"));

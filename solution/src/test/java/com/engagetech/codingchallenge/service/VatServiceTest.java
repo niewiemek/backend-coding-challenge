@@ -2,6 +2,7 @@ package com.engagetech.codingchallenge.service;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import java.math.BigDecimal;
 
@@ -14,7 +15,7 @@ public class VatServiceTest {
 
     @Before
     public void init() {
-        vatService.vat = BigDecimal.valueOf(20);
+        ReflectionTestUtils.setField(vatService, "vat", BigDecimal.valueOf(20));
         vatService.init();
     }
 

@@ -1,7 +1,7 @@
 package com.engagetech.codingchallenge.service;
 
 import com.engagetech.codingchallenge.dao.ExpenseDao;
-import com.engagetech.codingchallenge.entity.Expense;
+import com.engagetech.codingchallenge.common.entity.Expense;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -24,9 +24,6 @@ public class ExpenseServiceTest {
     private ExpenseService expenseService;
 
     @Mock
-    private VatService vatService;
-
-    @Mock
     private ExpenseDao dao;
 
     @Test
@@ -36,17 +33,12 @@ public class ExpenseServiceTest {
         BigDecimal grossAmount = BigDecimal.valueOf(100.00);
         Expense expense = new Expense(null, new Date(1), grossAmount, null, "Expense reason");
 
-        BigDecimal vatValue = new BigDecimal(20.00);
-        when(vatService.calculateFromGross(grossAmount)).thenReturn(vatValue);
-
         when(dao.save(expense)).thenReturn(expense);
 
         // When
         expenseService.save(expense);
 
         // Then
-        assertThat(expense.getVat()).isEqualTo(vatValue);
-        verify(vatService).calculateFromGross(grossAmount);
         verify(dao).save(expense);
     }
 

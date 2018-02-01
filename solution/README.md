@@ -4,7 +4,10 @@ This is a simple Spring Boot application to save your personal expenses.
 Requirements:
 * Java 8
 * MySQl 5.7.*
-* Maven
+* Maven 3
+* Gulp 3.9.1
+* NPM 5.6.0
+* Node 6.11.0
 
 # Setting up
 
@@ -26,6 +29,11 @@ Query OK, 0 rows affected (0.00 sec)
 ```
 
 ## Build
+### JavaScript
+Front-End code should be built and deployed prior to running backend package. Use the ```gulp build-deploy``` task.
+This will build minified JS files and deploy them in ```src/main/resources/static``` resources of the maven projecr.
+
+### Java
 User Maven to build.
 
 ```mvn clean package```
@@ -33,7 +41,7 @@ User Maven to build.
 ## Run
 Application is built as a JAR file that you can run with:
 
-```java -jar expanses.jar```
+```java -jar coding-challenge-0.0.1-SNAPSHOT.jar```
 
 ## Database setup
 For purse of this project Hibernate can create database schema for you. To do this please set the following property to create on first start. It should be changed to none afterwards.
@@ -44,5 +52,12 @@ Create:
 Runtime:
 ``` spring.jpa.hibernate.ddl-auto=none ```
 
+Please update DB connection string & credentials in ``` src/main/resources/application.properties ```
+
 ## Development Hints
-Project Lombok is used to make the code a bit more friendly. Please install Project Lombok plugin into your IDEA. You can check more details here: https://projectlombok.org/
+Project Lombok is used to make the code a bit more friendly. Please install Project Lombok plugin into your IDE. You can check more details here: https://projectlombok.org/
+
+#Further Development
+#Input validation on front-end
+#Date picker
+#Login

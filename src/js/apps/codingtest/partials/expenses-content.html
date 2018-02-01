@@ -5,23 +5,36 @@
 	</div>
 
 	<h3>Add an expense</h3>
-	<form name="expensesform">
+	<form name="expensesform" novalidate>
 		<ul>
 			<li>
 				<label>Date</label>
-				<input type="text" ng-required="true" ng-model="newExpense.date" ui-date="dateOptions" placeholder="dd/mm/yyyy" />
+				<input name="date" type="text" ng-required="true" ng-model="newExpense.date" ng-pattern="/^(3[01]|[12][0-9]|0[1-9])/(1[0-2]|0[1-9])/[0-9]{4}$/" placeholder="dd/mm/yyyy"/>
+				<small class="alert" ng-show="expensesform.date.$invalid && !expensesform.date.$pristine">Date is mandatory and must be in format dd/mm/yyyy</small>
 			</li>
 			<li>
 				<label>Amount</label>
-				<input type="text" ng-required="true" ng-model="newExpense.amount" placeholder="00.00" />
+				<input name="amount" type="text" ng-required="true" ng-change="updateVat()" ng-model="newExpense.amount" placeholder="00.00" ng-min="0" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step=".01" />
+				<small class="alert" ng-show="expensesform.amount.$invalid && !expensesform.amount.$pristine">Amount is mandatory and must be a number (00.00)</small>
+			</li>
+			<li>
+				<label>Currency</label>
+				<input name="currency" type="text" ng-required="true" ng-model="newExpense.currency" ng-pattern="/^(GBP|EUR)$/"/>
+				<small class="alert" ng-show="expensesform.currency.$invalid && !expensesform.currency.$pristine">Currency is mandatory and must be EUR or GBP</small>
+			</li>
+			<li>
+				<label>Vat</label>
+				{{newExpense.vat}}
 			</li>
 			<li>
 				<label>Reason</label>
-					<textarea at-auto-resize ng-required="true" ng-model="newExpense.reason" ng-trim="false" placeholder="why oh why?"></textarea>
+				<textarea name="reason" at-auto-resize ng-required="true" ng-model="newExpense.reason" ng-trim="false" placeholder="why oh why?" ng-maxlength="5000"></textarea>
+				<small class="alert" ng-show="expensesform.reason.$invalid && !expensesform.reason.$pristine">Reason is mandatory.</small>
 			</li>
 			<li>
 				<label></label>
-				<button ng-click="saveExpense()" class="solid">Save Expense</button> <button ng-click="clearExpense()">cancel</button>
+				<button ng-click="saveExpense()" ng-disabled="expensesform.$invalid" class="solid">&nbsp;Save Expense</button>
+				<button ng-click="clearExpense()">cancel</button>
 			</li>
 		</ul>
 	</form>

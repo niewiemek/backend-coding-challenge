@@ -1,4 +1,10 @@
 target/
+src/main/resources/static/css
+src/main/resources/static/fonts
+src/main/resources/static/img
+src/main/resources/static/js
+src/main/resources/static/maps
+
 !.mvn/wrapper/maven-wrapper.jar
 
 ### STS ###

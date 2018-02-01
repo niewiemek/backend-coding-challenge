@@ -1,4 +1,4 @@
-package com.engagetech.codingchallenge.common;
+package com.engagetech.codingchallenge.web;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
@@ -14,6 +14,6 @@ public class ExpenseRequest {
     private String reason;
     private BigDecimal amount;
     private BigDecimal vat;
-    private String baseCurrency;
+    private String currency;
 
 }

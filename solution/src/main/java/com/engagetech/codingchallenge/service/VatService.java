@@ -1,14 +1,22 @@
 package com.engagetech.codingchallenge.service;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.math.BigDecimal;
 
+/**
+ * This class should be deleted after implementation was moved to front-end as it's obsolete.
+ * I have left if for just for reference.
+ *
+ */
 @Service
 public class VatService {
 
-    BigDecimal vat = BigDecimal.valueOf(20);
+    @Value("${vat}")
+    private BigDecimal vat;
+
     private BigDecimal vatAsDecimal = null;
 
     private static final BigDecimal HUNDRED = BigDecimal.valueOf(100);

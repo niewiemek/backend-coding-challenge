@@ -1,6 +1,6 @@
 package com.engagetech.codingchallenge.web;
 
-import com.engagetech.codingchallenge.entity.Expense;
+import com.engagetech.codingchallenge.common.entity.Expense;
 import com.engagetech.codingchallenge.service.ExpenseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,9 +17,13 @@ public class ExpensesEndpoint {
     @Autowired
     private ExpenseService service;
 
-    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<Expense> create(@RequestBody Expense expense) {
+    @Autowired
+    private ExpenseMapper expenseMapper;
 
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<Expense> create(@RequestBody ExpenseRequest expenseRequest) {
+
+        Expense expense = expenseMapper.createExpense(expenseRequest);
         service.save(expense);
 
         return new ResponseEntity<>(expense, HttpStatus.CREATED);

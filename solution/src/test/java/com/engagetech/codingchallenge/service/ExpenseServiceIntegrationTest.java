@@ -1,7 +1,7 @@
 package com.engagetech.codingchallenge.service;
 
 import com.engagetech.codingchallenge.Application;
-import com.engagetech.codingchallenge.entity.Expense;
+import com.engagetech.codingchallenge.common.entity.Expense;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

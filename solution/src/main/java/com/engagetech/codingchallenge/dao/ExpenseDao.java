@@ -1,6 +1,6 @@
 package com.engagetech.codingchallenge.dao;
 
-import com.engagetech.codingchallenge.entity.Expense;
+import com.engagetech.codingchallenge.common.entity.Expense;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
