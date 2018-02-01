@@ -31,7 +31,7 @@ Query OK, 0 rows affected (0.00 sec)
 ## Build
 ### JavaScript
 Front-End code should be built and deployed prior to running backend package. Use the ```gulp build-deploy``` task.
-This will build minified JS files and deploy them in ```src/main/resources/static``` resources of the maven projecr.
+This will build minified JS files and deploy them in ```src/main/resources/static``` resources of the maven project.
 
 ### Java
 User Maven to build.
@@ -63,4 +63,4 @@ Just a few ideas for further development.
 The following work could be done:
 1. Date picker. ui-date seems to be used but it's not included in the project.
 2. Front-End code dependencies should be managed by NPM and not commited into the repository.
-4. I have removed spring security, but login could be added. DB model for expenses should be then epanded by owning user. 
+4. I have removed spring security, but login could be added. DB model for expenses should be then expanded by owning user. 
