@@ -57,7 +57,10 @@ Please update DB connection string & credentials in ``` src/main/resources/appli
 ## Development Hints
 Project Lombok is used to make the code a bit more friendly. Please install Project Lombok plugin into your IDE. You can check more details here: https://projectlombok.org/
 
-#Further Development
-#Input validation on front-end
-#Date picker
-#Login
+# Further Development
+Just a few ideas for further development.
+
+The following work could be done:
+1. Date picker. ui-date seems to be used but it's not included in the project.
+2. Front-End code dependencies should be managed by NPM and not commited into the repository.
+4. I have removed spring security, but login could be added. DB model for expenses should be then epanded by owning user. 
